@@ -4,16 +4,16 @@ var number_char_codes = ["0","1","2","3","4","5","6","7","8","9"];
 var special_char_codes = ["&","!","#","$","%"];
 
 var randomChoice = function(param) {
-  var i = Math.floor(Math.random() * param.length - 1);
+  var i = Math.floor(Math.random() * param.length);
   var computerChoice = param[i];
-  return(computerChoice)
+  return computerChoice
 }
 
-var passwordLength = prompt("Enter a number between 7 and 129")
+var passwordLength = prompt("Enter a number between 7 and 129");
 
 var newArray = [];
 
-var getUserInput = function() {
+var getUserInput = function() {    
 
     var passwordLower = prompt("Would you like to use lowercase letters? y/n");
     if (passwordLower == "y") {
@@ -40,10 +40,11 @@ var getUserInput = function() {
     if (passwordSpecial == "y") {
       var special = randomChoice(special_char_codes)
       var specialString = special.toString();
-      newArray.push(special);
+      newArray.push(specialString);
       console.log(special)
-    }
+    }  // Special characters output as undefined when pushed into an array and I don't really know why.
 }
+
 getUserInput()
 console.log(newArray)
 
@@ -53,11 +54,12 @@ var generatePassword = function(newArray) {
   let datRando = randomChoice(newArray)
   generatedPassword += datRando
  }
- console.log(generatedPassword)
+  console.log(generatedPassword)
+ 
 }
 generatePassword(newArray)
 
-  document.getElementById("password").innerHTML = generatePassword;
+  document.getElementById("password").innerHTML = newArray;
 
 
   function makePassword() {
@@ -67,14 +69,4 @@ generatePassword(newArray)
   // Assignment Code
   var generateBtn = document.querySelector("#generate");
   
-  // Write password to the #password input
-  function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector("#password");
-  
-    passwordText.value = password;
-  
-  }
-  
-  // Add event listener to generate button
-  generateBtn.addEventListener("click", generatePassword);
+  generateBtn.addEventListener("click", getUserInput);
