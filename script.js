@@ -42,7 +42,7 @@ var getUserInput = function() {
       var specialString = special.toString();
       newArray.push(specialString);
       console.log(special)
-    }  // Special characters output as undefined when pushed into an array and I don't really know why.
+    } 
 }
 
 getUserInput()
@@ -53,18 +53,15 @@ var generatePassword = function(newArray) {
   for (var i=0; i < passwordLength; i++) { 
   let datRando = randomChoice(newArray)
   generatedPassword += datRando
+  document.getElementById("password").innerHTML = generatedPassword;
  }
   console.log(generatedPassword)
  
 }
 generatePassword(newArray)
 
-  document.getElementById("password").innerHTML = newArray;
+  
 
-
-  function makePassword() {
-    let complexity = document.getElementById("card-body")
-  }
   
   // Assignment Code
   var generateBtn = document.querySelector("#generate");
